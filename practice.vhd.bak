@@ -1,0 +1,22 @@
+libaray ieee;
+use ieee.std_logic_1164.all;
+
+entity practice is
+port(x:in std_logic_vector(3 downto 0);
+     y:out std_logic_vector(4 downto 0));
+end practice;
+
+architecture behavior of practice is 
+begin
+   process (x)
+	  type rom is array(0 to 4) of std_logic_vector(5 downto 0);
+	  constant z:rom := (
+	                     "00000",
+								"00001",
+								"00010",
+								"00011",
+								"00100");
+	  begin
+	     y<= z(to_integer(unsigned(x)));
+	  end process;
+end behavior;
